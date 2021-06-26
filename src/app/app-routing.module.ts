@@ -8,13 +8,13 @@ const routes: Routes = [
   {
     path: 'lazy',
     loadChildren: () =>
-      import('./content/content-routing.module').then((m) => m.ContentRoutingModule),
+      import('./lazymodule/lazy-routing.module').then((m) => m.LazyRoutingModule),
   },
   //{ path: '', redirectTo: '/home', pathMatch: 'full'},
   //{ path: 'home', component: HomeComponent },
   
-  // If no matching route found, go back to home route
- // { path: '**', redirectTo: '', pathMatch: 'full'}
+  //If no matching route found, go back to home route
+  { path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
 @NgModule({

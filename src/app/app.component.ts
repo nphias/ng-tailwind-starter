@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   title = 'angular-tailwind-starter';
@@ -16,4 +15,9 @@ export class AppComponent {
   navtoggle(){
     (this.navIsOpen === false) ? this.navIsOpen = true : this.navIsOpen = false
   }
+
+  closeMenu(){
+    this.menuIsOpen = false
+  }
+
 }
