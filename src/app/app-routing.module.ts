@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { HomeComponent } from './content/home/home.component';
 
 //lazy load modules
@@ -8,17 +8,15 @@ const routes: Routes = [
   {
     path: 'lazy',
     loadChildren: () =>
-      import('./lazymodule/lazy-routing.module').then((m) => m.LazyRoutingModule),
+      import('./lazymodule/lazy.module').then((m) => m.LazyModule),
   },
-  //{ path: '', redirectTo: '/home', pathMatch: 'full'},
-  //{ path: 'home', component: HomeComponent },
   
   //If no matching route found, go back to home route
-  { path: '**', redirectTo: '', pathMatch: 'full'}
+ // { path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{preloadingStrategy: PreloadAllModules, onSameUrlNavigation: 'ignore'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
